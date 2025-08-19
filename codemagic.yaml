@@ -4,13 +4,13 @@ workflows:
     instance_type: mac_mini_m1
     max_build_duration: 120
     integrations:
-      app_store_connect: CodFlMontreal3664
+      app_store_connect: Farm Road
     environment:
       ios_signing:
         distribution_type: app_store
-        bundle_identifier: com.inside.montreal.life.tour
+        bundle_identifier: com.farmroad.berksulas
       vars:
-        APP_ID: 6746460673
+        APP_ID: 6751243398
       flutter: stable
       xcode: latest
       cocoapods: default

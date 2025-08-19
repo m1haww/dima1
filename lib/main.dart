@@ -9,26 +9,61 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 Future<void> main() async {
+  print('🚀 App starting...');
   WidgetsFlutterBinding.ensureInitialized();
+  print('✅ WidgetsFlutterBinding initialized');
 
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
+  print('✅ Orientation set');
 
-  await FlutterDownloader.initialize(debug: true, ignoreSsl: true);
+  try {
+    print('🔄 Skipping FlutterDownloader initialization for testing');
+    // await FlutterDownloader.initialize(debug: true, ignoreSsl: true);
+    print('✅ FlutterDownloader skipped');
+  } catch (e) {
+    print('❌ FlutterDownloader error: $e');
+  }
 
-  final campaign = await initAppsFlyer("");
+  String? campaign;
+  try {
+    print('🔄 Initializing AppsFlyer...');
+    // TODO: Replace with your actual AppsFlyer dev key
+    campaign = await initAppsFlyer("YOUR_DEV_KEY_HERE");
+    print('✅ AppsFlyer initialized, campaign: $campaign');
+  } catch (e) {
+    print('❌ AppsFlyer error: $e');
+    campaign = null;
+  }
 
-  final advertisingId = await AdvertisingId.id(true);
+  String? advertisingId;
+  try {
+    print('🔄 Getting advertising ID (with ATT prompt)...');
+    advertisingId = await AdvertisingId.id(true);
+    print('✅ Advertising ID: $advertisingId');
+  } on PlatformException catch (e) {
+    print('❌ PlatformException getting advertising ID: $e');
+    advertisingId = null;
+  } catch (e) {
+    print('❌ General error getting advertising ID: $e');
+    advertisingId = null;
+  }
 
-  final prefs = await SharedPreferences.getInstance();
-  await prefs.setString('advertisingId', advertisingId ?? '');
-  await prefs.setString('campaign', campaign ?? '');
+  try {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString('advertisingId', advertisingId ?? '');
+    await prefs.setString('campaign', campaign ?? '');
+    print('✅ Preferences saved');
+  } catch (e) {
+    print('❌ Preferences error: $e');
+  }
 
   // await NotificationService().init();
   // await NotificationService().startRandomNotifications();
 
+  print('🎯 Running app...');
   runApp(ProviderScope(child: const FarmRoadApp()));
 }
 

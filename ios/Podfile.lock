@@ -1,5 +1,17 @@
 PODS:
+  - advertising_id (0.0.1):
+    - Flutter
+  - appsflyer_sdk (6.17.1):
+    - appsflyer_sdk/Core (= 6.17.1)
+  - appsflyer_sdk/Core (6.17.1):
+    - AppsFlyerFramework (= 6.17.1)
+    - Flutter
+  - AppsFlyerFramework (6.17.1):
+    - AppsFlyerFramework/Main (= 6.17.1)
+  - AppsFlyerFramework/Main (6.17.1)
   - Flutter (1.0.0)
+  - flutter_downloader (0.0.1):
+    - Flutter
   - shared_preferences_foundation (0.0.1):
     - Flutter
     - FlutterMacOS
@@ -10,14 +22,27 @@ PODS:
     - FlutterMacOS
 
 DEPENDENCIES:
+  - advertising_id (from `.symlinks/plugins/advertising_id/ios`)
+  - appsflyer_sdk (from `.symlinks/plugins/appsflyer_sdk/ios`)
   - Flutter (from `Flutter`)
+  - flutter_downloader (from `.symlinks/plugins/flutter_downloader/ios`)
   - shared_preferences_foundation (from `.symlinks/plugins/shared_preferences_foundation/darwin`)
   - url_launcher_ios (from `.symlinks/plugins/url_launcher_ios/ios`)
   - webview_flutter_wkwebview (from `.symlinks/plugins/webview_flutter_wkwebview/darwin`)
 
+SPEC REPOS:
+  trunk:
+    - AppsFlyerFramework
+
 EXTERNAL SOURCES:
+  advertising_id:
+    :path: ".symlinks/plugins/advertising_id/ios"
+  appsflyer_sdk:
+    :path: ".symlinks/plugins/appsflyer_sdk/ios"
   Flutter:
     :path: Flutter
+  flutter_downloader:
+    :path: ".symlinks/plugins/flutter_downloader/ios"
   shared_preferences_foundation:
     :path: ".symlinks/plugins/shared_preferences_foundation/darwin"
   url_launcher_ios:
@@ -26,7 +51,11 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/webview_flutter_wkwebview/darwin"
 
 SPEC CHECKSUMS:
+  advertising_id: d5de9e659986092d7ca50977dc50f4f4fcd4c30a
+  appsflyer_sdk: 4742426e516773176c4f19e0de22422142334151
+  AppsFlyerFramework: 11ef2dea3fa755f9ed8ba53267012ee1c62d7dc0
   Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
+  flutter_downloader: 78da0da1084e709cbfd3b723c7ea349c71681f09
   shared_preferences_foundation: 9e1978ff2562383bd5676f64ec4e9aa8fa06a6f7
   url_launcher_ios: 694010445543906933d732453a59da0a173ae33d
   webview_flutter_wkwebview: 1821ceac936eba6f7984d89a9f3bcb4dea99ebb2
