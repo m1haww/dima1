@@ -92,124 +92,114 @@ class HomeContent extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Farm Road - Farmer\'s Path'),
         centerTitle: true,
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.settings),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const SettingsPage(),
-                ),
-              );
-            },
-          ),
-        ],
       ),
       body: Stack(
         children: [
           SingleChildScrollView(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Container(
-              height: 220,
-              decoration: BoxDecoration(
-                gradient: const LinearGradient(
-                  colors: [
-                    Color(0xFF2E7D32),
-                    Color(0xFF4CAF50),
-                    Color(0xFF8BC34A),
-                  ],
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                ),
-                borderRadius: BorderRadius.circular(20),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.green.withOpacity(0.3),
-                    spreadRadius: 2,
-                    blurRadius: 10,
-                    offset: const Offset(0, 5),
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Container(
+                  height: 220,
+                  decoration: BoxDecoration(
+                    gradient: const LinearGradient(
+                      colors: [
+                        Color(0xFF2E7D32),
+                        Color(0xFF4CAF50),
+                        Color(0xFF8BC34A),
+                      ],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                    ),
+                    borderRadius: BorderRadius.circular(20),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.green.withOpacity(0.3),
+                        spreadRadius: 2,
+                        blurRadius: 10,
+                        offset: const Offset(0, 5),
+                      ),
+                    ],
                   ),
-                ],
-              ),
-              child: Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.all(16),
-                      decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.2),
-                        shape: BoxShape.circle,
-                      ),
-                      child: const Icon(
-                        Icons.agriculture,
-                        size: 60,
-                        color: Colors.white,
-                      ),
+                  child: Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.all(16),
+                          decoration: BoxDecoration(
+                            color: Colors.white.withOpacity(0.2),
+                            shape: BoxShape.circle,
+                          ),
+                          child: const Icon(
+                            Icons.agriculture,
+                            size: 60,
+                            color: Colors.white,
+                          ),
+                        ),
+                        const SizedBox(height: 12),
+                        const Text(
+                          'Welcome to the Farm!',
+                          style: TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                        const Text(
+                          'Play, learn recipes and get bonuses',
+                          style: TextStyle(fontSize: 16, color: Colors.white70),
+                          textAlign: TextAlign.center,
+                        ),
+                      ],
                     ),
-                    const SizedBox(height: 12),
-                    const Text(
-                      'Welcome to the Farm!',
-                      style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                    const Text(
-                      'Play, learn recipes and get bonuses',
-                      style: TextStyle(fontSize: 16, color: Colors.white70),
-                      textAlign: TextAlign.center,
-                    ),
-                  ],
+                  ),
                 ),
-              ),
+                const SizedBox(height: 24),
+                const Text(
+                  'Main Sections:',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 16),
+                _buildFeatureCard(
+                  icon: Icons.games,
+                  title: '🎮 Farm Road',
+                  description:
+                      'Complete levels: garden → village → market → fair',
+                  color: const Color(0xFFFF9800),
+                  onTap: () => _navigateToPage(context, 1),
+                ),
+                const SizedBox(height: 12),
+                _buildFeatureCard(
+                  icon: Icons.casino,
+                  title: '🎡 Harvest Wheel',
+                  description:
+                      'Spin the wheel and get random bonuses and recipes',
+                  color: const Color(0xFF9C27B0),
+                  onTap: () => _navigateToPage(context, 2),
+                ),
+                const SizedBox(height: 12),
+                _buildFeatureCard(
+                  icon: Icons.restaurant,
+                  title: '📚 Farm Recipes',
+                  description:
+                      'Catalog of healthy dishes from natural products',
+                  color: const Color(0xFF2196F3),
+                  onTap: () => _navigateToPage(context, 3),
+                ),
+                const SizedBox(height: 12),
+                _buildFeatureCard(
+                  icon: Icons.qr_code,
+                  title: '🎟️ QR Bonuses',
+                  description: 'Get discounts at partner stores',
+                  color: const Color(0xFFF44336),
+                  onTap: () => _navigateToPage(context, 4),
+                ),
+              ],
             ),
-            const SizedBox(height: 24),
-            const Text(
-              'Main Sections:',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 16),
-            _buildFeatureCard(
-              icon: Icons.games,
-              title: '🎮 Farm Road',
-              description: 'Complete levels: garden → village → market → fair',
-              color: const Color(0xFFFF9800),
-              onTap: () => _navigateToPage(context, 1),
-            ),
-            const SizedBox(height: 12),
-            _buildFeatureCard(
-              icon: Icons.casino,
-              title: '🎡 Harvest Wheel',
-              description: 'Spin the wheel and get random bonuses and recipes',
-              color: const Color(0xFF9C27B0),
-              onTap: () => _navigateToPage(context, 2),
-            ),
-            const SizedBox(height: 12),
-            _buildFeatureCard(
-              icon: Icons.restaurant,
-              title: '📚 Farm Recipes',
-              description: 'Catalog of healthy dishes from natural products',
-              color: const Color(0xFF2196F3),
-              onTap: () => _navigateToPage(context, 3),
-            ),
-            const SizedBox(height: 12),
-            _buildFeatureCard(
-              icon: Icons.qr_code,
-              title: '🎟️ QR Bonuses',
-              description: 'Get discounts at partner stores',
-              color: const Color(0xFFF44336),
-              onTap: () => _navigateToPage(context, 4),
-            ),
-          ],
-        ),
-      ),
+          ),
           const ChickenAssistant(),
         ],
       ),
@@ -231,67 +221,67 @@ class HomeContent extends StatelessWidget {
         onTap: onTap,
         borderRadius: BorderRadius.circular(16),
         child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(16),
-          gradient: LinearGradient(
-            colors: [Colors.white, color.withOpacity(0.05)],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(16),
+            gradient: LinearGradient(
+              colors: [Colors.white, color.withOpacity(0.05)],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
           ),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Row(
-            children: [
-              Container(
-                width: 56,
-                height: 56,
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [color, color.withOpacity(0.7)],
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
+          child: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Row(
+              children: [
+                Container(
+                  width: 56,
+                  height: 56,
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [color, color.withOpacity(0.7)],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                    ),
+                    borderRadius: BorderRadius.circular(16),
+                    boxShadow: [
+                      BoxShadow(
+                        color: color.withOpacity(0.3),
+                        spreadRadius: 1,
+                        blurRadius: 6,
+                        offset: const Offset(0, 3),
+                      ),
+                    ],
                   ),
-                  borderRadius: BorderRadius.circular(16),
-                  boxShadow: [
-                    BoxShadow(
-                      color: color.withOpacity(0.3),
-                      spreadRadius: 1,
-                      blurRadius: 6,
-                      offset: const Offset(0, 3),
-                    ),
-                  ],
+                  child: Icon(icon, color: Colors.white, size: 28),
                 ),
-                child: Icon(icon, color: Colors.white, size: 28),
-              ),
-              const SizedBox(width: 20),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      title,
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.grey[800],
+                const SizedBox(width: 20),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        title,
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.grey[800],
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 8),
-                    Text(
-                      description,
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Colors.grey[600],
-                        height: 1.3,
+                      const SizedBox(height: 8),
+                      Text(
+                        description,
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: Colors.grey[600],
+                          height: 1.3,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
         ),
       ),
     );
